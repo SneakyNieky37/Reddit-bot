@@ -1,8 +1,6 @@
-from multiprocessing import connection
 import random
 import socket
 import sys
-from grpc import server
 import praw
 
 def recieve_connection():
@@ -23,15 +21,9 @@ def main():
     print(
         "go here while logged into the account you want to create a token for:"
         "https://www.reddit.com/prefs/apps/"
-    )
-    print(
-        "click the create an app button. put something in the name field and select the"
-        "script radio button."
-        )
-    print("put http://localhost:8080 in the redirect uri field and click create app")
-    client_id = input("enter the client ID, its the line just under personal use script at the top: ")
-    client_secret = input("Enter the client secret, its the line next to secret:")
-    commaScopes = input("Now enter a comma separated list of scopes, or all for all tokens: ")
+    client_id = input("enter the client ID:")
+    client_secret = input("Enter the client secret:")
+    commaScopes = input("Now enter a comma separated list of scopes, or all for all: ")
 
     if commaScopes.lower() == "all":
         scopes = ["*"]
